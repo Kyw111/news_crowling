@@ -22,8 +22,6 @@ public class NewsCrowling {
             Document doc = connect.get();
 
             Elements elements = doc.select("div.list_content > a.list_title");
-//            Elements elements = doc.getElementsByClass("list_title"); // 뉴스 기사 제목을 제외한 불필요한 것들도 나옴
-//            Elements elements = doc.getElementsByTag("a");
 
             elements.stream().forEach(element -> {
                 System.out.println("- " + element.text());
@@ -35,12 +33,15 @@ public class NewsCrowling {
         return null;
     }
 
+    /**
+     * 언론사별 주요 뉴스
+     * @return
+     */
     public ResponseEntity newsCompanyIssue() {
         try {
             String url = "https://news.naver.com/main/officeList.naver"; // 네이버 언론사별 주요 뉴스 주소
             Document doc = Jsoup.connect(url).get();
 
-//            Elements elements = doc.select("div.classfy > ul.list_txt" );
             Elements elements = doc.select("ul.list_txt > li" );
             elements.stream().forEach(element -> {
                 System.out.println("- " + element.text());
