@@ -69,7 +69,7 @@ public class NewsCrowling {
         return null;
     }
 
-    @Scheduled(cron = "0 2 0 * * *") // 매일 오전 8시 30분에 실행
+    @Scheduled(cron = "0 30 8 * * *") // 매일 오전 8시 30분에 실행
     public void scheduler() {
         this.newsCompanyIssue();
     }
