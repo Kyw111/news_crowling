@@ -27,11 +27,18 @@ public class NewsCrowling {
             Connection connect = Jsoup.connect(url);
             Document doc = connect.get();
 
+            StringBuilder sb = new StringBuilder();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH시 mm분");
+            String now = LocalDateTime.now().format(formatter);
+            sb.append(now + TITLE + " \n\n");
+
             Elements elements = doc.select("div.list_content > a.list_title");
 
             elements.stream().forEach(element -> {
                 System.out.println("- " + element.text());
+                sb.append("- "+element.text() +"\n");
             });
+            return "<pre>" + sb.toString() + "<pre>";
         } catch (Exception e) {
             e.printStackTrace();
         }

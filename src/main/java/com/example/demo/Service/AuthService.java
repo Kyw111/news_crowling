@@ -45,7 +45,7 @@ public class AuthService extends HttpCallService{
 //            logger.debug("토큰발급에 실패했습니다.");
             System.out.println("토큰발급에 실패했습니다.");
             return false;
-        }else {
+        } else {
             authToken = accessToken;
             return true;
         }
