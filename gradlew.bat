@@ -15,6 +15,7 @@
 @rem
 
 @if "%DEBUG%"=="" @echo off
+set JAVA_HOME=C:\Java\Open\java17
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows

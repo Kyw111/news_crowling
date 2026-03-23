@@ -104,3 +104,26 @@ npm start
 - 언론사별 뉴스: `https://news.naver.com/main/officeList.naver`
 
 > 네이버 HTML 구조 변경 시 크롤링 셀렉터 수정 필요 (`NewsCrowling.java`)
+
+## Docker 배포
+
+### 구성
+- **백엔드 Dockerfile**: 멀티스테이지 빌드 (eclipse-temurin:17-jdk-alpine → 17-jre-alpine), 포트 8080
+- **프론트엔드 Dockerfile**: Node 18 빌드 → Nginx Alpine 서빙, 포트 80
+- **docker-compose.yml**: MariaDB 10.6 + 백엔드 + 프론트엔드 통합 관리
+
+### 실행
+```bash
+docker-compose up --build
+```
+
+### 주의사항
+- `Constant.java`는 git 제외 파일이므로 Docker 빌드 전 존재 여부 확인
+- DB 볼륨은 docker-compose에서 별도 정의 필요 (데이터 영속성)
+
+## 개발 환경 정보
+
+- OS: Windows 11
+- JDK 17 위치: `C:\Java\Open\java17`
+- Python3: 설치됨
+- Docker: 설치됨
